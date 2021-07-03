@@ -24,11 +24,11 @@
 | user               | references | null: false, foreign_key: true  |
 | item_name          | string     | null: false                     |
 | explanation        | text       | null: false                     |
-| category           | integer    | null: false                     |
-| condition          | integer    | null: false                     |
-| delivery_cost      | integer    | null: false                     |
-| delivery_place     | integer    | null: false                     |
-| days_delivery      | integer    | null: false                     |
+| category_id        | integer    | null: false                     |
+| condition_id       | integer    | null: false                     |
+| delivery_cost_id   | integer    | null: false                     |
+| prefecture_id      | integer    | null: false                     |
+| days_delivery_id   | integer    | null: false                     |
 | price              | integer    | null: false                     |
 
 ### Association
@@ -52,6 +52,7 @@
 | Column             | Type      | Options                        |
 | --------           | --------  | --------                       |
 | postal_code        | string    | null: false                    |
+| prefecture_id      | integer   | null: false                    |
 | municipal          | string    | null: false                    |
 | address            | string    | null: false                    |
 | building_name      | string    |                                |
