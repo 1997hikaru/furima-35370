@@ -14,7 +14,7 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :item_name
     validates :explanation
-    validates :price, numericality: {in:300..9999999}
+    validates :price, numericality: { less_than_or_equal_to: 9999999, greater_than_or_equal_to: 300 }
   end
 
   with_options numericality: { other_than: 1, message: "can't be blank" } do
