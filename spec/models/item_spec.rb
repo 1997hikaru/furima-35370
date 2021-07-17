@@ -7,7 +7,7 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品登録' do
     context '出品登録できるとき' do
-      it 'item_name,explanation,category,condition,delively_cost,prefecture,days_delivery,priceがあれば登録できる' do
+      it 'item_name,explanation,category,condition,delively_cost,prefecture,days_delivery,price,imageがあれば登録できる' do
         expect(@item).to be_valid
       end
     end
@@ -71,6 +71,26 @@ RSpec.describe Item, type: :model do
         @item.price = '千'
         @item.valid?
         expect(@item.errors.full_messages).to include 'Price is not a number'
+      end
+      it 'priceが英字で入力されているとき' do
+        @item.price = 'thousand'
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Price is not a number'
+      end
+      it 'priceが英数字混合で入力されているとき' do
+        @item.price = 'aa111'
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'Price is not a number'
+      end
+      it '画像が空のとき' do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include "Image can't be blank"
+      end
+      it 'userが紐づいていないとき' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include 'User must exist'
       end
     end
   end
