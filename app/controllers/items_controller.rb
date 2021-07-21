@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :edit]
   def index
     @items = Item.all.order(created_at: :desc)
   end
@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
     if @item.save
       redirect_to root_path
     else
-      render :new # エラー文を表示させる表示に変更
+      render :new
     end
   end
 
@@ -21,10 +21,19 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
-  # def edit
-    # @item = Item.find(params[:id])
-    # redirect_to root_path unless current_user == @item.user
-  # end
+  def edit
+    @item = Item.find(params[:id])
+    redirect_to root_path unless current_user == @item.user
+  end
+
+  def update
+    @item = Item.find(params[:id])
+    if @item.update(item_params)
+       redirect_to item_path
+    else
+      render :edit
+    end
+  end
 
   # def destroy
     # item = Item.find(params[:id])
