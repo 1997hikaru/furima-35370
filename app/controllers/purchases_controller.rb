@@ -7,10 +7,6 @@ class PurchasesController < ApplicationController
     @purchase_address = PurchaseAddress.new
   end
 
-  def new
-    @purchase_address = PurchaseAddress.new
-  end
-
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
@@ -44,8 +40,4 @@ class PurchasesController < ApplicationController
         currency: 'jpy'
       )
   end
-
-  # def move_to_index
-    # redirect_to root_path if current_user == @item.user
-  # end
 end
