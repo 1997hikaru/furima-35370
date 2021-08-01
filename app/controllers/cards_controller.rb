@@ -1,4 +1,4 @@
-# class CardsController < ApplicationController
+ class CardsController < ApplicationController
   # def new
   # end
 
@@ -20,4 +20,4 @@
     # end
   # end
 
-# end
+ end
