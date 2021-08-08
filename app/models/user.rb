@@ -16,7 +16,7 @@ class User < ApplicationRecord
 
     with_options format: { with: /\A[ぁ-んァ-ヶ一-龥々ー]+\z/ } do
       validates :last_name
-      validates :first_name_reading
+      validates :first_name
     end
 
     with_options format: { with: /\A[ァ-ヶー－]+\z/ } do
